@@ -19,16 +19,9 @@ Try to challenge yourself first before asking AI to do this. :>
 
 -----
 
-## Exercise 2
+## Exercise 2 Bonus points
 Ask the user to input their age.
 Print a message based on the following conditions:
 - If age is below 13, print "You're a child!"
 - If age is between 13 and 19 (inclusive), print "You're a teenager!"
 - Otherwise, print "You're an adult!"
-
-### Exercise 2: Grade Analyzer
-Write a program that:
-1. Takes a list of grades
-2. Calculates the average
-3. Determines the letter grade (A: 90-100, B: 80-89, C: 70-79, D: 60-69, F: below 60)
-4. Counts how many grades are above average
