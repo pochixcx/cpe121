@@ -428,3 +428,13 @@ for (int i = 0; i < names.size(); i++) {
     System.out.println(names.get(i));
 }
 ```
+
+**ArrayList vs Array (Clear Comparison)**
+
+| Feature         | Array      | ArrayList       |
+| --------------- | ---------- | --------------- |
+| Size            | Fixed      | Dynamic         |
+| Store primitive | Yes        | No              |
+| Access syntax   | arr[index] | list.get()      |
+| Performance     | Faster     | Slight Overhead |
+| Flexibility     | Low        | High            |
