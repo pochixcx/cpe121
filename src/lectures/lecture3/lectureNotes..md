@@ -350,7 +350,7 @@ An ArrayList is:
 Creating an ArrayList
 
 ```java
-import java.itil.ArrayList;
+import java.util.ArrayList;
 ArrayList<Integer> numbers = new ArrayList<>();
 ```
 
@@ -361,3 +361,70 @@ Key ideas:
 
 Why?
 Collections store reference types, not primitives.
+
+**Autoboxing and Wrapper Types**
+
+```java
+ArrayList<Integer> nums = new ArrayList<>();
+
+nums.add(10); // int → Integer automatically
+```
+
+Java wraps primitives into objects:
+
+- int → Integer
+- double → Double
+- char → Character
+
+This is called autoboxing.
+
+**Adding and Accessing Elements**
+
+```java
+ArrayList<String> names = new ArrayList<>();
+
+names.add("Alice");
+names.add("Bob");
+
+System.out.println(names.get(0));
+```
+
+Key differences from arrays:
+
+- No index assignment
+- Must use methods
+
+**Size vs Length**
+
+Arrays:
+
+```java
+arr.length
+```
+
+ArrayList:
+
+```java
+list.size()
+```
+
+**Modifying and Removing Elements**
+
+```java
+names.set(1, "Charlie");
+names.remove(0);
+```
+
+Important:
+
+- Removing shifts elements left
+- Indexes change after removal
+
+**Iterating Over an ArrayList**
+Using for Loop
+
+```java
+for (int i = 0; i < names.size(); i++) {
+    System.out.println(names.get(i));
+}
+```
