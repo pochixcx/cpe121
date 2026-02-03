@@ -261,7 +261,7 @@ The finally block:
 
 ## 4. Recursion
 
-Recursion occurs when a method calls itself to solve a problem by breaking it into smaller versions of the same problem.
+Recursion occurs when a method calls itself to solve a problem by breaking it into smaller versions of the same problem. Recusrion is like decomposing problems into sub problems.
 
 ### 4.1 Structure of a Recursive Method
 
@@ -307,3 +307,21 @@ However, recursion:
 - Must be carefully designed to avoid infinite calls
 
 Iteration is often more efficient, but recursion can be clearer and more expressive.
+
+**Recursion vs Iteration**
+
+Recursion:
+
+- Clear
+
+- Expressive
+
+- Matches problem structure
+
+Iteration:
+
+- Efficient
+
+- Memory-friendly
+
+- Often faster
