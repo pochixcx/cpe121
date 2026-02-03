@@ -11,3 +11,4 @@ To navigate the workspace:
   - `Lecture2` - Java programming core concepts
   - `Lecture3` - Arrays
   - `Lecture4` - Control structure, Error handling and recursive programming
+  - `Lecture5` -
