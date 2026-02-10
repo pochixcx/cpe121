@@ -11,6 +11,6 @@ To navigate the workspace:
   - [`Lecture2`](/./src/lectures/lecture2/lectureNotes.md) - Java programming core concepts
   - [`Lecture3`](/./src/lectures/lecture3/lectureNotes..md) - Arrays lecture.
   - [`Lecture4`](/./src//lectures/Lecture4/lectureNotes.md) - Control structure, Error handling and recursive programming
-  
+  - [`Lecture5`](/src/lectures/Lecture5/lectureNotes.md) - Introduction to OOP
 
 For our `assignments/laboratory execise` solutions, please navigate to this folder [here](/./src/exerciseSolutions/)
