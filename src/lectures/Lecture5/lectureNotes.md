@@ -255,3 +255,119 @@ No object required.
 - Global facts
 
 Bad use of static turns OOP back into procedural chaos.
+
+## Getters and Setters (Controlled Access to Object State)
+
+Before discussing getters and setters, we must confront a key idea:
+
+`Objects do not exist to store data.`
+`Objects exist to protect the meaning of that data.`
+
+**The Problem They Solve**
+
+Consider an Employee object.
+
+An employee’s salary:
+
+- Must not be negative
+
+- Must change only through valid operations
+
+- Must remain meaningful over time
+
+If fields were public:
+
+```
+employee.salary = -5000;
+```
+
+The compiler allows it.
+
+The program runs.
+
+The object is now lying.
+
+Getters and setters exist to prevent this.
+
+## What Is a Getter?
+
+A getter is a method that allows controlled reading of a private field.
+
+Example:
+```java
+public int getSalary() {
+    return salary;
+}
+```
+
+Key points:
+
+- It does not expose the field itself
+
+- It allows the class to decide how data is read
+
+- It preserves encapsulation
+
+A getter answers the question:
+
+*“What information am I allowed to know about this object?”*
+
+A proper getter:
+
+- May format data
+
+- May compute derived values
+
+- Does not always return raw fields
+
+## What Is a Setter?
+
+A setter is a method that allows controlled modification of a private field.
+
+Example:
+```java
+public void setSalary(int salary) {
+    if (salary < 0) {
+        return;
+    }
+    this.salary = salary;
+}
+```
+
+Key points:
+
+- It protects the object from invalid values
+
+- It enforces rules every time the field changes
+
+- It centralizes validation logic
+
+A setter answers:
+
+*“Under what conditions may this object change?”*
+
+## Why Not Access Fields Directly?
+
+Direct access breaks object integrity.
+
+```java
+employee.salary += 1000000;  // bypasses all rules
+```
+
+This creates:
+
+- Inconsistent states
+
+- Hidden bugs
+
+- Objects that cannot defend themselves
+
+Encapsulation without getters and setters is incomplete.
+
+A proper setter:
+
+- Validates input
+
+- Enforces invariants
+
+- May reject or transform values
