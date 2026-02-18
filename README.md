@@ -13,5 +13,6 @@ To navigate the workspace:
   - [`Lecture4`](/./src//lectures/Lecture4/lectureNotes.md) - Control structure, Error handling and recursive programming
   - [`Lecture5`](/src/lectures/Lecture5/lectureNotes.md) - **Introduction to OOP**
   - [`Lecture6`](/src/lectures/Lecture6/lectureNotes.md) - **Encapsulation** lecture, access the encapsulation examples [here](/src/lectures/Lecture6/examples/)
+  - [`Lecture7](/src/lectures/Lecture7/lectureNotes.md) - **Inheritance** lecture, access the examples [here](/src/lectures/Lecture7/examples/)
 
 For our `assignments/laboratory execise` solutions, please navigate to this folder [here](/./src/exerciseSolutions/)
