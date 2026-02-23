@@ -344,3 +344,140 @@ Animal has this attributes:
 
 Create a subclass Dog, Cat, Goat and override the makeSound() method to make the specific sound of the specific Animal.
 ```
+
+## `this` and `super` keyword in java
+
+In an inheritance chain, multiple objects are involved at once.
+
+A Dog object is:
+
+- a Dog
+
+- a Mammal
+
+- an Animal
+
+All at the same time.
+
+So Java gives us two pointers:
+
+- this → the current object
+
+- super → the immediate parent part of the object
+
+Not two objects.
+
+One object.
+
+Different views of it.
+
+That distinction matters.
+
+### this Keyword (Current Object)
+
+this refers to:
+
+“The object that is currently executing this method.”
+
+It is commonly used to:
+
+- Distinguish fields from parameters
+
+- Call another constructor in the same class
+
+- Pass the current object as an argument
+
+Example 1: Resolving Name Conflicts
+
+```java
+public class Animal {
+    String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+}
+```
+
+Why this.name?
+
+Because without this:
+
+- name = name; assigns the parameter to itself
+
+The field remains unchanged
+
+this says:
+
+👉 “I mean the field of this object.”
+
+Example 2: this Refers to the Same Object
+
+```java
+public class Dog {
+    public void show() {
+        System.out.println(this);
+    }
+}
+```
+
+this is not magic.
+
+It’s just a reference to the current object in memory.
+
+## final Methods and final Classes
+
+(Setting Boundaries in Inheritance)
+
+Inheritance is powerful—but uncontrolled inheritance breaks systems.
+Java gives final to stop extension where it no longer makes sense.
+
+### final Method
+
+A final method cannot be overridden by subclasses.
+
+Why this exists
+
+To guarantee critical behavior never changes.
+
+Example
+
+```java
+class Animal {
+    public final void breathe() {
+        System.out.println("Animal breathes");
+    }
+}
+
+
+class Dog extends Animal {
+    // ❌ ERROR: cannot override final method
+    // public void breathe() { }
+}
+```
+
+Subclasses can inherit it, but not change it.
+
+### final Class
+
+A final class cannot be extended at all.
+
+Example
+
+```java
+final class MathUtility {
+    public static int square(int x) {
+        return x * x;
+    }
+}
+
+// ❌ ERROR
+class AdvancedMath extends MathUtility {
+}
+```
+
+Why Java allows this
+
+- Security
+- Predictability
+- Performance optimizations
