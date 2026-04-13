@@ -1,0 +1,5 @@
+package lectures.Midterm.Lecture8.examples.NotificationSystem.src.interfaces;
+
+public interface Notification {
+    void send(String message);
+}
