@@ -1,4 +1,4 @@
-package lectures.Finals.Lecture3.examples.preDatabase;
+package lectures.Finals.Lecture3.examples.workingExamples;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

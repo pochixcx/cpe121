@@ -1,4 +1,4 @@
-package lectures.Finals.Lecture3.examples.preDatabase;
+package lectures.Finals.Lecture3.examples.workingExamples;
 
 import java.awt.FlowLayout;
 import javax.swing.JButton;
