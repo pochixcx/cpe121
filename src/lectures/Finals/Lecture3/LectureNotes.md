@@ -1,4 +1,4 @@
-# Lecture 3: GUI + Database Integration (Swing, Events, SQLite)
+# Lecture 3: GUI Development (Swing, Events, SQLite)
 
 ## Overview
 
