@@ -707,9 +707,26 @@ public class ErrorHandlingExample {
 
 ## 4. SQLite and JDBC Essentials
 
-## 4.1 Why SQLite?
+## 4.1 Why Move From CSV to SQLite?
 
-SQLite is embedded and file-based:
+Earlier activities used variables first, then CSV persistence. SQLite is the next step because the application now needs safer record management, easier updates, and cleaner retrieval.
+
+Connection to earlier lessons:
+
+- `LabActivity1` focused on in-memory record handling.
+- `LabActivity_CSVPersistence` added file-based persistence.
+- this lecture keeps the same form and validation flow, but replaces the file layer with a database layer.
+
+Quick comparison:
+
+| Aspect             | CSV                                     | SQLite                             |
+| ------------------ | --------------------------------------- | ---------------------------------- |
+| Storage            | plain text rows                         | relational table in one `.db` file |
+| Update one record  | usually rewrite part or all of the file | run `UPDATE` on one row            |
+| Search and sorting | manual parsing in Java                  | use SQL queries                    |
+| Data rules         | mostly enforced in code                 | rules can also live in schema      |
+
+SQLite is a good fit for classroom desktop applications because it is embedded and file-based:
 
 - no separate server setup,
 - one `.db` file stores all tables,
@@ -717,7 +734,27 @@ SQLite is embedded and file-based:
 
 ---
 
-## 4.2 JDBC Workflow
+## 4.2 Requirements for Database Integration
+
+Technical requirements:
+
+- Java JDK installed,
+- IDE or editor ready for Java,
+- SQLite JDBC dependency available,
+- SQLite database file such as `students.db`,
+- a table schema prepared before CRUD operations.
+
+Learner requirements:
+
+- basic Swing form understanding,
+- event handling with buttons and listeners,
+- input validation with `JOptionPane`,
+- model-object flow from earlier activities,
+- try-with-resources from file handling.
+
+---
+
+## 4.3 JDBC Workflow
 
 1. Open connection.
 2. Create `PreparedStatement`.
@@ -726,9 +763,36 @@ SQLite is embedded and file-based:
 5. Read result (`ResultSet`) if needed.
 6. Close resources (use try-with-resources).
 
+Core idea:
+
+- the connection string identifies the database file,
+- `DriverManager.getConnection(...)` opens the connection,
+- `PreparedStatement` keeps SQL safer and clearer,
+- `ResultSet` is only needed when reading rows.
+
 ---
 
-## 4.3 SQL Schema Example
+## 4.4 Database Integration Flow
+
+The lesson should feel like a continuation of the GUI lesson, not a separate topic.
+
+```text
+Swing form -> validation -> DAO -> SQLite -> JTable refresh
+```
+
+What each layer does:
+
+- Swing UI reads user input and shows feedback.
+- Validation stops bad data before any SQL runs.
+- DAO contains SQL and database-specific code.
+- SQLite stores the actual records.
+- `JTable` displays current data, but it is not the real data source.
+
+This is the main database integration idea for the lecture: the interface stays familiar, but persistence moves from CSV to SQLite.
+
+---
+
+## 4.5 SQL Schema Example
 
 ```sql
 CREATE TABLE IF NOT EXISTS students (
@@ -749,7 +813,7 @@ Column notes:
 
 ---
 
-## 4.4 Connection Example
+## 4.6 Connection Example
 
 ```java
 import java.sql.Connection;
@@ -763,7 +827,7 @@ try (Connection conn = DriverManager.getConnection(url)) {
 
 ---
 
-## 4.5 Safe SQL with PreparedStatement
+## 4.7 Safe SQL with PreparedStatement
 
 Unsafe style (avoid):
 
@@ -791,7 +855,7 @@ Why safer:
 
 ---
 
-## 4.6 CRUD Operations (Core SQL)
+## 4.8 CRUD Operations (Core SQL)
 
 Create:
 
@@ -816,6 +880,31 @@ Delete:
 ```sql
 DELETE FROM students WHERE id = ?;
 ```
+
+Map each CRUD action to a visible user action:
+
+- Create: user fills out the form and clicks Save.
+- Read: app loads rows from the database and shows them in `JTable`.
+- Update: user selects a record, edits the fields, then saves changes.
+- Delete: user selects a row and removes it.
+
+---
+
+## 4.9 Linking CRUD Back to the GUI Flow
+
+Students already know this event flow:
+
+1. Read values from text fields.
+2. Validate the input.
+3. Call a DAO method.
+4. Refresh the table.
+5. Show success or error feedback.
+
+Important distinction:
+
+- `JTable` only displays data.
+- SQLite is the source of persisted data.
+- seeing a row on screen does not automatically mean it is already saved.
 
 ---
 
@@ -935,6 +1024,32 @@ private void refreshTable() {
 Important detail:
 
 - clear existing model rows before repopulating to avoid duplicates.
+
+---
+
+## 5.3 Common Database Integration Misconceptions and Setup Problems
+
+Common misconceptions:
+
+- "The table is the data source."
+- "If the row appears on screen, it is already saved."
+- "String concatenation is acceptable for SQL because the values are simple."
+- "The connection can stay open forever without cleanup."
+
+Corrections:
+
+- `JTable` is only a visual component.
+- persistence only happens when the DAO successfully executes SQL.
+- `PreparedStatement` should be the default habit.
+- use try-with-resources for connections, statements, and result sets.
+
+Common setup problems:
+
+1. SQLite JDBC dependency missing.
+2. Wrong database file path.
+3. Table not created before insert.
+4. SQL syntax error.
+5. Table not refreshed after a successful CRUD operation.
 
 ---
 
