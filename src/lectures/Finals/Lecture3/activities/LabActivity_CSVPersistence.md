@@ -1,4 +1,4 @@
-# Lab Activity: CSV Persistence (Bridge to Lecture 2)
+# Lab Activity: CSV Persistence
 
 ## Title
 
