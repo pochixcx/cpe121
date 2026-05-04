@@ -24,5 +24,6 @@ To navigate the workspace:
 - [`Lecture1`](/./src/lectures/Finals/Lecture1/lectureNotes.md) - HashMaps, ArrayList, I/O files
 - [`Lecture2`](/./src/lectures/Finals/Lecture2/lectureNotes.md) - Java Applets
 - [`Lecture3`](/./src/lectures/Finals/Lecture3/LectureNotes.md) - Java Swing
+- [`Lecture4`](/./src/lectures/Finals/Lecture4/LectureNotes.md) - Design Thinking
 
 For our `assignments/laboratory execise` solutions, please navigate to this folder [here](/./src/exerciseSolutions/)
